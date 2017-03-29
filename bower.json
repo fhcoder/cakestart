@@ -1,0 +1,27 @@
+{
+  "name": "cakestart",
+  "authors": [
+    "fhcoder@outlook.com"
+  ],
+  "description": "Cake configurado para iniciar projetos",
+  "main": "webroot/js/main.js",
+  "keywords": [
+    "cakestart"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/fhcoder/cakestart",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "components"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "AdminLTE": "admin-lte#^2.3.11",
+    "jquery": "^3.2.1",
+    "font-awesome": "^4.7.0"
+  }
+}
