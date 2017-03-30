@@ -2,9 +2,9 @@
     <!-- Logo -->
     <a href="index2.html" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><b>A</b>LT</span>
+        <span class="logo-mini"><b>C</b>ST</span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>Admin</b>LTE</span>
+        <span class="logo-lg"><b>Cake</b>Start</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -19,7 +19,7 @@
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <?= $this->Html->image('user.png',['class'=>'user-image','alt'=>'Imagem do Usuario']) ?>
-                        <span class="hidden-xs">Alexander Pierce</span>
+                        <span class="hidden-xs"><?= $currentUser['nome'] ?></span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
@@ -27,17 +27,17 @@
                             <?= $this->Html->image('user.png',['class'=>'img-circle','alt'=>'Imagem do Usuario']) ?>
 
                             <p>
-                                Alexander Pierce - Web Developer
-                                <small>Member since Nov. 2012</small>
+                                <?= $currentUser['nome'] ?>
+                                <small>Cadastrado em. <?= $currentUser['created']->format('d/m/Y') ?></small>
                             </p>
                         </li>
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                <?= $this->Html->link('Profile',['controller'=>'Users','action'=>'profile'],['class'=>'btn btn-default btn-flat']) ?>
                             </div>
                             <div class="pull-right">
-                                <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                <?= $this->Html->link('Sair',['controller'=>'Users','action'=>'logout'],['class'=>'btn btn-default btn-flat']) ?>
                             </div>
                         </li>
                     </ul>

@@ -26,7 +26,7 @@ class UsersSeed extends AbstractSeed
                 'username' => $faker->colorName,
                 'password' => (new \Cake\Auth\DefaultPasswordHasher())->hash('123456'),
                 'email'=>$faker->email,
-                'role'=>$faker->randomNumber(1),
+                'role'=>rand(0,1),
                 'created'=>$faker->dateTime->format('Y-m-d H:i:s')
             ];
         }

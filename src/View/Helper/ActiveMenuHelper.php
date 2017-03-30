@@ -15,7 +15,7 @@ class ActiveMenuHelper extends Helper
 {
     private $activateMenuList = [
         'Users' => ['Users' => ['index', 'form']],
-        'Categories' => ['Categories' => ['index', 'form']]
+        'Dashboard' => ['Dashboard' => ['index']]
     ];
 
     public function toActivate($menuName)

@@ -15,6 +15,7 @@
 
 namespace App\Controller;
 
+use App\Model\Table\UsersTable;
 use Cake\Controller\Controller;
 use Cake\Event\Event;
 
@@ -51,6 +52,7 @@ class AppController extends Controller
             ],
             'authorize' => 'Controller',
             "unauthorizedRedirect" => ["controller" => "users", "action" => "notAuthorized"],
+            "authorizedRedirect" => ["controller" => "Dashboard", "action" => "index"],
 
         ]);
         $this->loadComponent('Format');
@@ -68,6 +70,9 @@ class AppController extends Controller
         //$this->loadComponent('Security');
         //$this->loadComponent('Csrf');
         $this->viewBuilder()->setLayout('layout');
+        $currentUser = $this->Auth->user();
+
+        $this->set(compact('currentUser'));
     }
 
     /**
@@ -83,5 +88,25 @@ class AppController extends Controller
         ) {
             $this->set('_serialize', true);
         }
+    }
+
+    public function isAuthorized($user = null)
+    {
+        if ($user['role'] === UsersTable::ROLE_SUPER) {
+            return true;
+        }
+        // Default deny
+        return false;
+    }
+
+    public function buildAutorization($user = null, array $roles, array $actions)
+    {
+        if (in_array('*', $actions)) {
+            return true;
+        }
+        if (in_array($user['role'], $roles)) {
+            return in_array($this->request->action, $actions);
+        }
+        return false;
     }
 }

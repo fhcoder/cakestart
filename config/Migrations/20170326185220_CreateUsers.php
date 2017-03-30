@@ -22,6 +22,7 @@ class CreateUsers extends AbstractMigration
             'default' => null,
             'limit' => 255,
             'null' => false,
+            'unique'=>true,
         ]);
         $table->addColumn('password', 'string', [
             'default' => null,
@@ -32,6 +33,7 @@ class CreateUsers extends AbstractMigration
             'default' => null,
             'limit' => 255,
             'null' => false,
+            'unique'=>true,
         ]);
         $table->addColumn('role', 'integer', [
             'default' => null,

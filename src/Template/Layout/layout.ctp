@@ -13,9 +13,13 @@
     <?= $this->Html->css('/components/AdminLTE/dist/css/AdminLTE.css') ?>
     <?= $this->Html->css("/components/AdminLTE/dist/css/skins/_all-skins.min.css") ?>
     <?= $this->Html->css("/components/AdminLTE/dist/css/AdminLTE.css") ?>
+    <?= $this->Html->css("/components/AdminLTE/plugins/iCheck/square/blue.css") ?>
+    <?= $this->Html->css("main.css") ?>
     <?= $this->Html->script('/components/jquery/dist/jquery.min.js') ?>
     <?= $this->Html->script('/components/bootstrap/dist/js/bootstrap.min.js') ?>
+    <?= $this->Html->script('/components/AdminLTE/plugins/iCheck/icheck.min.js') ?>
     <?= $this->Html->script('/components/AdminLTE/dist/js/app.js') ?>
+    <?= $this->Html->script('main.js') ?>
 
 
     <?= $this->fetch('meta') ?>
