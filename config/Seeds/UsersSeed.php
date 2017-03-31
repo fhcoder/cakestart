@@ -23,7 +23,7 @@ class UsersSeed extends AbstractSeed
         for ($i = 1; $i <= 200; $i++) {
             $data[] = [
                 'nome'=>$faker->firstName.' '.$faker->lastName,
-                'username' => $faker->colorName,
+                'username' => $faker->userName,
                 'password' => (new \Cake\Auth\DefaultPasswordHasher())->hash('123456'),
                 'email'=>$faker->email,
                 'role'=>rand(0,1),

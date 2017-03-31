@@ -10,12 +10,16 @@ namespace App\Controller;
 
 
 use App\Model\Table\UsersTable;
+use Cake\Validation\Validation;
 
 class UsersController extends AppController
 {
     public function initialize()
     {
         parent::initialize();
+        $this->Auth->allow('form');
+        $roles = $this->Users->getRoles();
+        $this->set(compact('roles'));
     }
 
     protected $authorizedActions = [
@@ -50,10 +54,16 @@ class UsersController extends AppController
         $this->set('_serialize', ['users']);
     }
 
+    public function view($id)
+    {
+        $this->viewBuilder()->setLayout('ajax');
+        $user = $this->Users->get($id);
+        $this->set(compact('user'));
+        $this->set('_serialize',['user']);
+    }
     public function form($id = null)
     {
         $user = $this->Users->newEntity();
-        $roles = $this->Users->getRoles();
         if ($id) {
             $user = $this->Users->get($id);
         }
@@ -67,7 +77,7 @@ class UsersController extends AppController
             }
         }
         $user['password'] = '';
-        $this->set(compact('user', 'roles'));
+        $this->set(compact('user'));
         $this->set('_serialize', ['user']);
     }
 

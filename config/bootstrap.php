@@ -49,6 +49,7 @@ require __DIR__ . '/paths.php';
  */
 require CORE_PATH . 'config' . DS . 'bootstrap.php';
 
+use App\Auth\AuthEventListener;
 use Cake\Cache\Cache;
 use Cake\Console\ConsoleErrorHandler;
 use Cake\Core\App;
@@ -224,3 +225,7 @@ if (Configure::read('debug')) {
 Plugin::load('Acl', ['bootstrap' => true]);
 
 Plugin::load('BootstrapUI');
+
+use Cake\Event\EventManager;
+$authEventListener = new AuthEventListener();
+EventManager::instance()->on($authEventListener);

@@ -28,7 +28,7 @@
 
                             <p>
                                 <?= $currentUser['nome'] ?>
-                                <small>Cadastrado em. <?= $currentUser['created']->format('d/m/Y') ?></small>
+                                <small>Cadastrado em. <?= isset($currentUser['created'])?$currentUser['created']->format('d/m/Y'):'' ?></small>
                             </p>
                         </li>
                         <!-- Menu Footer-->

@@ -30,7 +30,7 @@
                                 <td><?= $user->email ?></td>
                                 <td><?= $user->role ?></td>
                                 <td>
-                                    <?= $this->Html->link('<i class="fa fa-eye"></i> Ver',[],['class'=>'btn btn-success btn-flat','escape'=>false]) ?>
+                                    <?= $this->Html->link('<i class="fa fa-eye"></i> Ver',['action'=>'view',$user->id],['class'=>'btn btn-success btn-flat modal-detail','escape'=>false,'data-id'=>$user->id]) ?>
                                     <?= $this->Html->link('<i class="fa fa-edit"></i> Editar',['action'=>'form',$user->id],['class'=>'btn btn-primary btn-flat','escape'=>false]) ?>
                                     <?= $this->Form->postLink('<i class="fa fa-trash"></i> Excluir',['action'=>'delete',$user->id],['class'=>'btn btn-danger btn-flat','escape'=>false,'confirm'=>'Deseja realmente excluir esse registro?']) ?>
                                 </td>
@@ -51,3 +51,23 @@
         </div>
     </div>
 </div>
+<div id="modal-detail-user" class="modal fade modal-default">
+    <div class="modal-dialog">
+        <div id="modal-detail-content" class="modal-content">
+
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<script>
+    $('.modal-detail').click(function(e){
+       e.preventDefault();
+       var id = $(this).attr('data-id');
+       $('#modal-detail-content').load('<?= \Cake\Routing\Router::url(['action'=>'view']) ?>/'+id,function(){
+           $('#modal-detail-user').modal('show');
+       });
+    });
+
+</script>

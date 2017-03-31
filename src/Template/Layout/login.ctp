@@ -33,9 +33,10 @@
     <![endif]-->
 </head>
 <body class="hold-transition login-page">
+<?= $this->Flash->render() ?>
 <div class="login-box">
     <div class="login-logo">
-        <a href="../../index2.html"><b>Cake</b>Start</a>
+        <a href=""><b>Cake</b>Start</a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">

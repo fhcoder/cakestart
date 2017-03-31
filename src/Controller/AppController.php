@@ -15,6 +15,7 @@
 
 namespace App\Controller;
 
+use App\Auth\UsernameOrEmailAuthenticate;
 use App\Model\Table\UsersTable;
 use Cake\Controller\Controller;
 use Cake\Event\Event;
@@ -54,6 +55,9 @@ class AppController extends Controller
             "unauthorizedRedirect" => ["controller" => "users", "action" => "notAuthorized"],
             "authorizedRedirect" => ["controller" => "Dashboard", "action" => "index"],
 
+        ]);
+        $this->Auth->setConfig('authenticate', [
+                UsernameOrEmailAuthenticate::class,
         ]);
         $this->loadComponent('Format');
         $this->loadComponent('ImageUpload', [
