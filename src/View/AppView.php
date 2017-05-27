@@ -22,6 +22,8 @@ use Cake\View\View;
  * Your application’s default view class
  *
  * @link http://book.cakephp.org/3.0/en/views.html#the-app-view
+ * @property \App\View\Helper\ActiveMenuHelper $ActiveMenu
+ * @property \App\View\Helper\HtmlUtilHelper $HtmlUtil
  */
 class AppView extends View
 {

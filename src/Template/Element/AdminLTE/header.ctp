@@ -1,3 +1,8 @@
+<?php
+/**
+ * @var \App\View\AppView $this
+ */
+?>
 <header class="main-header">
     <!-- Logo -->
     <a href="index2.html" class="logo">

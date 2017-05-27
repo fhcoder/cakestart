@@ -27,6 +27,8 @@ use Cake\Event\Event;
  * will inherit them.
  *
  * @link http://book.cakephp.org/3.0/en/controllers.html#the-app-controller
+ * @property \App\Controller\Component\FormatComponent $Format
+ * @property \App\Controller\Component\ImageUploadComponent $ImageUpload
  */
 class AppController extends Controller
 {

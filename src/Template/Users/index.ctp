@@ -1,3 +1,9 @@
+<?php
+/**
+ * @var \App\View\AppView $this
+ * @var \App\Model\Entity\User[]|\Cake\Collection\CollectionInterface $users
+ */
+?>
 <div class="content">
     <div class="row">
         <div class="col-md-12">

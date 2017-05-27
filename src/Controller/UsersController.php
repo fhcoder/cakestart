@@ -6,6 +6,9 @@ namespace App\Controller;
 use App\Model\Table\UsersTable;
 use Cake\Validation\Validation;
 
+/**
+ * @property \App\Model\Table\UsersTable $Users
+ */
 class UsersController extends AppController
 {
     protected $authorizedActions = [

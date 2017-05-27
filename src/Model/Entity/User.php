@@ -16,6 +16,9 @@ use Cake\ORM\Entity;
  * @property \App\Model\Entity\Log[] $logs
  * @property \App\Model\Entity\Parent[] $parents
  * @property \App\Model\Entity\Teacher[] $teachers
+ * @property string $nome
+ * @property \Cake\I18n\FrozenTime $created
+ * @property \Cake\I18n\FrozenTime $modified
  */
 class User extends Entity
 {
