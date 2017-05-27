@@ -35,7 +35,8 @@ class UsernameOrEmailAuthenticate extends BaseAuthenticate
         $user = TableRegistry::get('Users')
             ->find('all')
             ->where(['username' => $username])
-            ->orWhere(['email' => $username])->first();
+            ->orWhere(['email' => $username])
+            ->first();
         return $user;
     }
 }

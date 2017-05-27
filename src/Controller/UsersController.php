@@ -20,13 +20,16 @@ class UsersController extends AppController
         if ($this->buildAutorization($user, [UsersTable::ROLE_SUPER], $this->authorizedActions)) {
             return true;
         }
+        if ($this->buildAutorization($user, [UsersTable::ROLE_COMMON], ['profile'])) {
+            return true;
+        }
         return parent::isAuthorized($user);
     }
 
     public function initialize()
     {
         parent::initialize();
-        $this->Auth->allow(['notAuthorized','logout','form','login']);
+        $this->Auth->allow(['notAuthorized','logout','login']);
         $roles = $this->Users->getRoles();
         $this->set(compact('roles'));
     }
@@ -102,7 +105,26 @@ class UsersController extends AppController
         }
 
     }
-
+    public function profile()
+    {
+        $user = $this->Users->newEntity();
+        $id = $this->Auth->user('id');
+        if ($id) {
+            $user = $this->Users->get($id);
+        }
+        if (!$this->request->is('get')) {
+            $user = $this->Users->patchEntity($user, $this->request->getData());
+            if ($this->Users->save($user)) {
+                $this->Flash->success(__('Registro salvo com sucesso.'));
+                return $this->redirect($this->referer());
+            } else {
+                $this->Flash->error(__('Ocorreu um erro ao salvar o registro.'));
+            }
+        }
+        $user->password = '';
+        $this->set(compact('user'));
+        $this->set('_serialize', ['user']);
+    }
     public function logout()
     {
         return $this->redirect($this->Auth->logout());
