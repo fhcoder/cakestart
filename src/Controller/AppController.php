@@ -51,13 +51,12 @@ class AppController extends Controller
                 'element' => 'error',
                 'key' => 'auth'
             ],
+            'authenticate'=>[
+                UsernameOrEmailAuthenticate::class
+            ],
             'authorize' => 'Controller',
             "unauthorizedRedirect" => ["controller" => "users", "action" => "notAuthorized"],
-            "authorizedRedirect" => ["controller" => "Dashboard", "action" => "index"],
 
-        ]);
-        $this->Auth->setConfig('authenticate', [
-                UsernameOrEmailAuthenticate::class,
         ]);
         $this->loadComponent('Format');
         $this->loadComponent('ImageUpload', [
@@ -78,7 +77,25 @@ class AppController extends Controller
 
         $this->set(compact('currentUser'));
     }
+    public function isAuthorized($user = null)
+    {
+        if ($user['role'] === UsersTable::ROLE_SUPER) {
+            return true;
+        }
+        // Default deny
+        return false;
+    }
 
+    public function buildAutorization($user = null, array $roles, array $actions)
+    {
+        if (in_array($user['role'], $roles)) {
+            if (in_array('*', $actions)) {
+                return true;
+            }
+            return in_array($this->request->action, $actions);
+        }
+        return false;
+    }
     /**
      * Before render callback.
      *
@@ -94,23 +111,4 @@ class AppController extends Controller
         }
     }
 
-    public function isAuthorized($user = null)
-    {
-        if ($user['role'] === UsersTable::ROLE_SUPER) {
-            return true;
-        }
-        // Default deny
-        return false;
-    }
-
-    public function buildAutorization($user = null, array $roles, array $actions)
-    {
-        if (in_array('*', $actions)) {
-            return true;
-        }
-        if (in_array($user['role'], $roles)) {
-            return in_array($this->request->action, $actions);
-        }
-        return false;
-    }
 }

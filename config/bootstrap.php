@@ -222,10 +222,6 @@ if (Configure::read('debug')) {
     Plugin::load('DebugKit', ['bootstrap' => true]);
 }
 
-Plugin::load('Acl', ['bootstrap' => true]);
 
 Plugin::load('BootstrapUI');
 
-use Cake\Event\EventManager;
-$authEventListener = new AuthEventListener();
-EventManager::instance()->on($authEventListener);

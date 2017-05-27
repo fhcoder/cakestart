@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Fernando Henrique
- * Date: 28/03/2017
- * Time: 21:41
- */
 
 namespace App\Controller;
 
@@ -14,14 +8,6 @@ use Cake\Validation\Validation;
 
 class UsersController extends AppController
 {
-    public function initialize()
-    {
-        parent::initialize();
-        $this->Auth->allow('form');
-        $roles = $this->Users->getRoles();
-        $this->set(compact('roles'));
-    }
-
     protected $authorizedActions = [
         '*'
     ];
@@ -31,11 +17,17 @@ class UsersController extends AppController
         if ($this->buildAutorization($user, [UsersTable::ROLE_SUPER], $this->authorizedActions)) {
             return true;
         }
-        if ($this->buildAutorization($user, UsersTable::ROLE_ALL, ['profile'])) {
-            return true;
-        }
         return parent::isAuthorized($user);
     }
+
+    public function initialize()
+    {
+        parent::initialize();
+        $this->Auth->allow(['notAuthorized','logout','form','login']);
+        $roles = $this->Users->getRoles();
+        $this->set(compact('roles'));
+    }
+
     public function index()
     {
         $search = $this->request->getQuery('search');
@@ -105,6 +97,7 @@ class UsersController extends AppController
                 $this->Flash->error(__('Usuário ou senha incorreto.'));
             }
         }
+
     }
 
     public function logout()

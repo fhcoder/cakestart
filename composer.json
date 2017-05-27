@@ -10,7 +10,6 @@
         "mobiledetect/mobiledetectlib": "2.*",
         "cakephp/migrations": "~1.0",
         "cakephp/plugin-installer": "*",
-        "cakephp/acl": "^0.2.4",
         "fzaninotto/faker": "^1.6",
         "friendsofcake/bootstrap-ui": "^1.0"
     },
