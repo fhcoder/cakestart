@@ -12,12 +12,12 @@
     <?= $this->Form->create($user) ?>
     <div class="box-body">
         <div class="row">
-            <div class="col-md-6"><?= $this->Form->input('username',['label'=>'Nome de Usuário']) ?></div>
-            <div class="col-md-6"><?= $this->Form->input('email') ?></div>
+            <div class="col-md-6"><?= $this->Form->control('username',['label'=>'Nome de Usuário']) ?></div>
+            <div class="col-md-6"><?= $this->Form->control('email') ?></div>
         </div>
         <div class="row">
-            <div class="col-md-6"><?= $this->Form->input('password',['label'=>'Senha']) ?></div>
-            <div class="col-md-6"><?= $this->Form->input('confirm_password',['label'=>'Repita a Senha','type'=>'password']) ?></div>
+            <div class="col-md-6"><?= $this->Form->control('password',['label'=>'Senha']) ?></div>
+            <div class="col-md-6"><?= $this->Form->control('confirm_password',['label'=>'Repita a Senha','type'=>'password']) ?></div>
         </div>
     </div>
     <!-- /.box-body -->

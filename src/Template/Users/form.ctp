@@ -20,28 +20,28 @@
 
                 <div class="row">
                         <div class="col-md-6">
-                            <?= $this->Form->input('nome',['label'=>'Nome Completo']) ?>
+                            <?= $this->Form->control('nome',['label'=>'Nome Completo']) ?>
                         </div>
                         <div class="col-md-6">
-                            <?= $this->Form->input('username',['label'=>'Nome de Usuário']) ?>
+                            <?= $this->Form->control('username',['label'=>'Nome de Usuário']) ?>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <?= $this->Form->input('email',['label'=>'E-mail']) ?>
+                            <?= $this->Form->control('email',['label'=>'E-mail']) ?>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <?= $this->Form->input('password',['label'=>'Senha']) ?>
+                            <?= $this->Form->control('password',['label'=>'Senha']) ?>
                         </div>
                         <div class="col-md-6">
-                            <?= $this->Form->input('confirm_password',['label'=>'Confirme a Senha','type'=>'password']) ?>
+                            <?= $this->Form->control('confirm_password',['label'=>'Confirme a Senha','type'=>'password']) ?>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <?= $this->Form->input('role',['options'=>$roles,'label'=>'Nível de Acesso']) ?>
+                            <?= $this->Form->control('role',['options'=>$roles,'label'=>'Nível de Acesso']) ?>
                         </div>
                     </div>
 
