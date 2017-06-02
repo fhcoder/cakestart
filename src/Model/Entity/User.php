@@ -12,10 +12,6 @@ use Cake\ORM\Entity;
  * @property string $password
  * @property string $email
  * @property int $role
- * @property \Cake\I18n\Time $created
- * @property \App\Model\Entity\Log[] $logs
- * @property \App\Model\Entity\Parent[] $parents
- * @property \App\Model\Entity\Teacher[] $teachers
  * @property string $nome
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
